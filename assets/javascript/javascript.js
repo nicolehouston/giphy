@@ -23,7 +23,9 @@ $(".buttons").on("click", "button", function(){
         url: queryURL,
         method: "GET"
     }).then(function(response){
-        results = response.data;
-        
+        console.log(response);
+        results = response.data[0];
+        var stillGiph = $("<img>").attr("src", results.images.original_still.url);
+        $("#giphContainer").append(stillGiph);
     });
 })
