@@ -23,10 +23,27 @@ $(".buttons").on("click", "button", function(){
         url: queryURL,
         method: "GET"
     }).then(function(response){
+        console.log(response);
         results = response.data;
         for(var i = 0; i < 10; i++){
-            var stillGiph = $("<img>").attr("src", results[i].images.original_still.url);
-            $("#giphContainer").append(stillGiph);
+            var stillGif = $("<img class='gif'>").attr("src", results[i].images.original_still.url);
+            stillGif.attr("data-still", results[i].images.original_still.url);
+            stillGif.attr("data-animate", results[i].images.original.url);
+            stillGif.attr("data-state", "still"); 
+            $("#gifContainer").append(stillGif);
         }
     });
+})
+
+$(document).on("click", ".gif", function(){
+    var state = $(this).attr("data-state");
+    if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+      }
+
+      else if (state === "animate"){
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+      }
 })
