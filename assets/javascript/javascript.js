@@ -30,14 +30,14 @@ $(".buttons").on("click", "button", function(){
         console.log(response);
         results = response.data;
         for(var i = 0; i < 10; i++){
-            var gifDiv = $("<div>");
+            var gifDiv = $("<div class='gifDiv'>");
             var stillGif = $("<img class='gif'>").attr("src", results[i].images.original_still.url);
             stillGif.attr("data-still", results[i].images.original_still.url);
             stillGif.attr("data-animate", results[i].images.original.url);
             stillGif.attr("data-state", "still"); 
             gifDiv.append(stillGif);
 
-            var rating = $("<p>").text("Rating: " + results[i].rating);
+            var rating = $("<p class='rating'>").text("Rating: " + results[i].rating);
             gifDiv.append(rating);
             
             $("#gifContainer").prepend(gifDiv);
