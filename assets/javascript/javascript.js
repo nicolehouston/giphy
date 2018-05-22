@@ -3,6 +3,9 @@ var topics = ["iron man", "captain america", "thor", "wonder woman", "black pant
 
 // Fuction that makes buttons for each topic
 function displayButtons(){
+
+    $(".buttons").empty();
+
     for (var i = 0; i < topics.length; i++){
         var btn = $("<button>");
         btn.attr("value", topics[i]);
@@ -13,6 +16,7 @@ function displayButtons(){
 
 displayButtons();
 
+// This function is called when the user clicks on a superhero button. It displays the 10 gifs of the superhero chosen
 $(".buttons").on("click", "button", function(){
 
     var superhero = $(this).val();
@@ -26,15 +30,30 @@ $(".buttons").on("click", "button", function(){
         console.log(response);
         results = response.data;
         for(var i = 0; i < 10; i++){
+            var gifDiv = $("<div>");
             var stillGif = $("<img class='gif'>").attr("src", results[i].images.original_still.url);
             stillGif.attr("data-still", results[i].images.original_still.url);
             stillGif.attr("data-animate", results[i].images.original.url);
             stillGif.attr("data-state", "still"); 
-            $("#gifContainer").append(stillGif);
+            gifDiv.append(stillGif);
+
+            var rating = $("<p>").text("Rating: " + results[i].rating);
+            gifDiv.append(rating);
+            
+            $("#gifContainer").prepend(gifDiv);
         }
     });
 })
 
+// This function renders a new button based on user input
+$("#addSuperhero").on("click", function(){
+    event.preventDefault();
+    var superhero = $("#superhero-input").val().trim();
+    topics.push(superhero);
+    displayButtons();
+})
+
+// This function is called when the user clicks on a still gif. It animates the gif and if the user clicks it again, it stops the gif.
 $(document).on("click", ".gif", function(){
     var state = $(this).attr("data-state");
     if (state === "still") {
