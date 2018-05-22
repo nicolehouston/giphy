@@ -61,6 +61,13 @@ body {
 
 .rating {
     font-size: 25px;
+    margin-left: 5%;
+}
+
+.gif {
+    width: 90%;
+    margin-right: 5%;
+    margin-left: 5%;
 }
 
 .gifDiv {
