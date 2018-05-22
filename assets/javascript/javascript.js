@@ -7,7 +7,7 @@ function displayButtons(){
     $(".buttons").empty();
 
     for (var i = 0; i < topics.length; i++){
-        var btn = $("<button>");
+        var btn = $("<button class='heroButton'>");
         btn.attr("value", topics[i]);
         btn.text(topics[i]);
         $(".buttons").append(btn);
@@ -49,8 +49,12 @@ $(".buttons").on("click", "button", function(){
 $("#addSuperhero").on("click", function(){
     event.preventDefault();
     var superhero = $("#superhero-input").val().trim();
-    topics.push(superhero);
-    displayButtons();
+    
+    if((topics.indexOf(superhero) === -1) && (superhero !== "")){
+        topics.push(superhero);
+        displayButtons();    
+    }
+    $("#superhero-input").val('');  
 })
 
 // This function is called when the user clicks on a still gif. It animates the gif and if the user clicks it again, it stops the gif.

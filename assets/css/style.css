@@ -1,0 +1,60 @@
+body {
+    width: 90%;
+    margin: 20px auto;
+    border: 2px solid black;
+    padding: 10px;
+    background-color: #fffbed;
+}
+
+ html {
+     background-color: #c7d4e8;
+ }
+
+ form {
+     background-color: #586789;
+     padding: 20px;
+     color: white;
+     margin-bottom: 10px;
+     font-size: 16px;
+ }
+
+ h1 {
+     text-align: center;
+     font-size: 35px;
+     margin: 20px;
+     font-family: 'Bangers', cursive;
+ }
+
+.heroButton {
+    background-color: #58a068;
+    font-size: 20px;
+    margin: 3px 5px 3px 0px;
+    color: white;
+    border: 1px solid black;
+}
+
+.heroButton:hover {
+    background-color: #a8f7ad;
+    color: black;
+}
+
+.heroButton:focus {
+    background-color: #fff9aa;
+    color: black;
+}
+
+#addSuperhero {
+    background-color: #bf3535;
+    color: white;
+}
+
+#addSuperhero:hover {
+    background-color: #f9a9a9;
+}
+
+#instructions {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
